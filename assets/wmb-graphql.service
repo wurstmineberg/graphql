@@ -1,0 +1,15 @@
+[Unit]
+Description=GraphQL API for Wurstmineberg
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Restart=always
+ExecStartPre=/usr/bin/git pull
+ExecStart=/home/fenhl/.cargo/bin/cargo run --release
+User=wurstmineberg
+Group=wurstmineberg
+WorkingDirectory=/opt/git/github.com/wurstmineberg/graphql/master
+
+[Install]
+WantedBy=multi-user.target
