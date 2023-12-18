@@ -141,12 +141,12 @@ fn graphql_playground() -> RawHtml<String> {
 
 #[rocket::get("/graphql?<query..>")]
 async fn graphql_query(schema: &State<WmbSchema>, query: GraphQLQuery) -> GraphQLResponse {
-    query.execute(schema).await
+    query.execute(&**schema).await
 }
 
 #[rocket::post("/graphql", data = "<request>", format = "application/json")]
 async fn graphql_request(schema: &State<WmbSchema>, request: GraphQLRequest) -> GraphQLResponse {
-    request.execute(schema).await
+    request.execute(&**schema).await
 }
 
 #[rocket::launch]
