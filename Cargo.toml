@@ -3,13 +3,25 @@ name = "wurstmineberg-graphql"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
-async-graphql = "6"
-async-graphql-rocket = "6"
-lazy-regex = "3"
-rocket = "0.5"
-thiserror = "1"
+[profile.release]
+codegen-units = 1
+lto = true
+strip = true
 
-[dependencies.mcanvil]
-git = "https://github.com/wurstmineberg/rust-anvil"
-branch = "main"
+[lints.rust]
+rust_2018_idioms = "deny"
+unsafe_code = "forbid"
+unused = "deny"
+unused_crate_dependencies = "deny"
+unused_import_braces = "deny"
+unused_lifetimes = "deny"
+unused_qualifications = "deny"
+warnings = "deny"
+
+[dependencies]
+async-graphql = "7"
+async-graphql-rocket = "7"
+lazy-regex = "3"
+mcanvil = { git = "https://github.com/wurstmineberg/rust-anvil", branch = "main" }
+rocket = "0.5"
+thiserror = "2"
