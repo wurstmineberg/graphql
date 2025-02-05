@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 Restart=always
 ExecStartPre=/usr/bin/git pull
-ExecStart=/home/fenhl/.cargo/bin/cargo run --release
+ExecStart=/opt/wurstmineberg/bin/wurstmineberg-graphql
 User=wurstmineberg
 Group=wurstmineberg
 WorkingDirectory=/opt/git/github.com/wurstmineberg/graphql/master
